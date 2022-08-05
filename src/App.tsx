@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import NewTodo from './components/NewTodo';
 import Todos from './components/Todos';
 import Todo from './models/todo';
@@ -12,10 +12,14 @@ function App() {
     setTodos((prevTodos) => [...prevTodos, newTodo]);
   }
 
+  const removeTodoHandler = (id: string) => {
+    setTodos((prevTodos) => prevTodos.filter(todo => todo.id !== id));
+  }
+
   return (
     <div>
       <NewTodo onAddTodo={addTodoHandler}/>
-      <Todos items={todos}/>
+      <Todos items={todos} onRemoveTodo={removeTodoHandler}/>
     </div>
   );
 }
