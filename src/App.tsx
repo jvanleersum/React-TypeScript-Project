@@ -9,7 +9,7 @@ function App() {
 
   const addTodoHandler = (text: string) => {
     const newTodo = new Todo(text);
-    setTodos([...todos, newTodo]);
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
   }
 
   return (
